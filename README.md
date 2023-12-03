@@ -97,3 +97,5 @@ npm i
 ```
 node 01/first-puzzle.js
 ```
+
+inspired by [Adrien NF](https://github.com/adrien-nf/advent-of-code-2023)
