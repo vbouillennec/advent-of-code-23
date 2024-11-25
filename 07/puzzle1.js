@@ -143,6 +143,7 @@ function rankHands(hands) {
 			rankedHands.push(...ranks);
 		}
 	});
+	return rankedHands;
 }
 
 /*  Main code */
@@ -156,7 +157,7 @@ const hands = lines.map((line, ind) => {
 // Sort hands by strength, from lowest to highest
 const sortedHands = sortHandsByStrength(hands);
 
-rankHands(sortedHands);
+const rankedHands = rankHands(sortedHands);
 
 const totalWinnings = rankedHands.reduce((accumulator, currentValue, rank) => accumulator + currentValue.bid * (rank + 1),0);
 
