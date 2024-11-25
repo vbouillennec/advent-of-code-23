@@ -1,4 +1,4 @@
-let input = `...........441.................367................296........................................567..47.....45.................947.............
+...........441.................367................296........................................567..47.....45.................947.............
 ...606..........888.....................508..........*892................+..=138.381..967...............*....%......926...........218.......
 ....*......116..*..............747............-....................777..460..........*.......549......127...595.......*..290........*.968...
 ..902..........425................+..........730..........#...........*.....196.............-.......................512.*....@...994..%.....
@@ -137,82 +137,4 @@ let input = `...........441.................367................296..............
 .932........*................-.............%..........147........316..*..........%..........................*................323............
 .........283...+......100...486....4.............52..*...............977.......472.*....262................298......=894..........128.93....
 .............953.......*........................*....719....$......................473.....=...523......-.......723..................*......
-....................571.......................720..........269...........885.............................902...........80...738..........975`;
-
-let input2 = 
-`467..114..
-...*......
-..35..633.
-......#...
-617*......
-.....+.58.
-..592.....
-......755.
-...$.*....
-.664.598..`;
-
-const specialChar = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,<>\/?~]/;
-
-let engineRows = input.split("\n");
-let array2D = engineRows.map((row) => row.split(""));
-
-let numRegex = new RegExp("[0-9]+", "g");
-
-let rowNumbers = engineRows.map((row, index) => {
-	return [...row.matchAll(numRegex)].map((match) => {
-		return {pos: match.index, num: match[0]};
-	});
-});
-
-let addition = 0;
-
-rowNumbers.forEach((row, index) => {
-	row.forEach((number) => {
-		let find = false;
-		number.num.split('').forEach((digit, i) => {
-			switch (true) {
-				case (array2D[index+1] && specialChar.test(array2D[index+1][number.pos+i])):
-					find = true;
-					break;
-				case (array2D[index-1] && specialChar.test(array2D[index-1][number.pos+i])):
-					find = true;
-					break;
-				case (array2D[number.pos+i+1] && specialChar.test(array2D[index][number.pos+i+1])):
-					find = true;
-					break;
-				case (array2D[number.pos+i-1] && specialChar.test(array2D[index][number.pos+i-1])):
-					find = true;
-					break;
-				case (
-					array2D[index+1] && 
-					array2D[number.pos+i+1] && 
-					specialChar.test(array2D[index+1][number.pos+i+1])):
-					find = true;
-					break;
-				case (
-					array2D[index+1] && 
-					array2D[number.pos+i-1] && 
-					specialChar.test(array2D[index+1][number.pos+i-1])):
-					find = true;
-					break;
-				case (
-					array2D[index-1] && 
-					array2D[number.pos+i+1] && 
-					specialChar.test(array2D[index-1][number.pos+i+1])):
-					find = true;
-					break;
-				case (
-					array2D[index-1] && 
-					array2D[number.pos+i-1] && 
-					specialChar.test(array2D[index-1][number.pos+i-1])):
-					find = true;
-					break;
-			}
-		});
-		if (find) {
-			console.log(number.num);
-			addition += parseInt(number.num);
-		}
-	});
-});
-console.log('\naddition: ' + addition);
+....................571.......................720..........269...........885.............................902...........80...738..........975
