@@ -159,6 +159,6 @@ const sortedHands = sortHandsByStrength(hands);
 
 const rankedHands = rankHands(sortedHands);
 
-const totalWinnings = rankedHands.reduce((accumulator, currentValue, rank) => accumulator + currentValue.bid * (rank + 1),0);
+const totalWinnings = rankedHands.reduce((accumulator, currentValue, rank) => accumulator + currentValue.bid * (rank + 1), 0);
 
 console.log({totalWinnings});
